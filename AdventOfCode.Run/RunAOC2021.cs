@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode.Run
+﻿namespace AdventOfCode.Run
 {
-    class RunAOC20221
+    class RunAOC2021
     {
         public static void Main(string[] Args)
         {

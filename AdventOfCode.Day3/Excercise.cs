@@ -10,9 +10,9 @@
 
         public Excercise(string filePath)
         {
-            
+
             FilePath = filePath;
-            
+
         }
 
 
@@ -25,20 +25,20 @@
         {
             string data = "";
             double len = Math.Ceiling((double)(File.Length + 1) / 2);
-            int[] Counter = new int[8] {0,0,0,0,0,0,0,0};
-            for (int i = 0; i < len; i++) 
+            int[] Counter = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
+            for (int i = 0; i < len; i++)
             {
                 data = File[i];
-                for (int j = 0; j < 8; j++) 
+                for (int j = 0; j < 8; j++)
                 {
-                    if(data[j] == '1') { Counter[j] += 1; }
+                    if (data[j] == '1') { Counter[j] += 1; }
                 }
             }
 
             for (int j = 0; j < 8; j++)
             {
                 Console.WriteLine(Counter[j]);
-                if(Counter[j] > len) { }
+                if (Counter[j] > len) { }
             }
 
 

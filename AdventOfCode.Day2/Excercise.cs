@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode.Day2
+﻿namespace AdventOfCode.Day2
 {
     public class Excercise
     {
@@ -43,22 +37,26 @@ namespace AdventOfCode.Day2
             for (int i = 0; i < len; i++)
             {
                 var words = File[i].Split(" ");
-                if (words[0] == "forward")
+
+                switch (words.First()) 
                 {
-                    Horizontal += int.Parse(words[1]);
-                    Depth += Aim * int.Parse(words[1]);
-                }
-                else if (words[0] == "down")
-                {
-                    Aim += int.Parse(words[1]);
-                }
-                else if (words[0] == "up")
-                {
-                    Aim -= int.Parse(words[1]);
-                }
-                else
-                {
-                    Console.WriteLine("wrong data!!!!!!");
+                    case "forward":
+                        Horizontal += int.Parse(words[1]);
+                        Depth += Aim * int.Parse(words[1]);
+                        break;
+
+                    case "down":
+                        Aim += int.Parse(words[1]);
+                        break;
+
+                    case "up":
+                        Aim -= int.Parse(words[1]);
+                        break;
+
+                    default:
+                        Console.WriteLine("wrong data!!!!!!");
+                        throw new Exception(words.First());
+
                 }
             }
 
