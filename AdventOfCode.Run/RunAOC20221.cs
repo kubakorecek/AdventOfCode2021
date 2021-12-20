@@ -37,6 +37,19 @@ namespace AdventOfCode.Run
                 Console.WriteLine("File does not exist in the current directory!");
             }
 
+
+            filepath = @"C:\Users\kubak\source\repos\AdventOfCode\AdventOfCode.Day3\input.txt";
+
+            if (File.Exists(filepath))
+            {
+                Console.WriteLine("File exists...");
+                Day3.Excercise st = new Day3.Excercise(filepath);
+                st.calc();
+            }
+            else
+            {
+                Console.WriteLine("File does not exist in the current directory!");
+            }
         }
     }
 }
