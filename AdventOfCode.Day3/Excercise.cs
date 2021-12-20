@@ -5,14 +5,13 @@
 
         private string FilePath;
         string[] File;
-
-        private int[] Counts = new int[8];
+        private int Result;
 
         public Excercise(string filePath)
         {
 
             FilePath = filePath;
-
+            Result = 0;
         }
 
 
@@ -24,31 +23,41 @@
         private void _calculate()
         {
             string data = "";
-            double len = Math.Ceiling((double)(File.Length + 1) / 2);
-            int[] Counter = new int[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
-            for (int i = 0; i < len; i++)
+            double HalfLenght = Math.Ceiling((double)(File.Length / 2));
+            int[] Counter = new int[File.First().Length];
+
+            Array.Fill(Counter, 0);
+            for (int i = 0; i < File.Length; i++)
             {
                 data = File[i];
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < File.First().Length; j++)
                 {
                     if (data[j] == '1') { Counter[j] += 1; }
                 }
             }
-
-            for (int j = 0; j < 8; j++)
+            int gamma = 0;
+            int epsilon = 0;
+            for (int j = 0; j < File.First().Length; j++)
             {
-                Console.WriteLine(Counter[j]);
-                if (Counter[j] > len) { }
+                
+                if (Counter[j] > HalfLenght) {
+                    gamma = gamma + (int)(Math.Pow(2, (11 - j)));
+                } else
+                {
+                    epsilon = epsilon + (int)(Math.Pow(2, (11 - j)));
+                }
             }
 
 
+            Result = epsilon * gamma;
         }
 
         public int calc()
         {
             _readLines(FilePath);
             _calculate();
-            return 0;
+            Console.WriteLine(Result);
+            return Result;
         }
     }
 }
