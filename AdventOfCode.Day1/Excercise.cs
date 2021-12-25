@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode.Day1
 {
-    public class Excercise
+    public class Excercise 
     {
         public string FilePath;
         private string[] Numbers;

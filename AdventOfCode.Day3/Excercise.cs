@@ -51,7 +51,7 @@
 
             Result = epsilon * gamma;
         }
-
+        public void _calculate_2() { }
         public int calc()
         {
             _readLines(FilePath);

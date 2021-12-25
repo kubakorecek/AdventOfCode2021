@@ -1,6 +1,8 @@
-﻿namespace AdventOfCode.Day2
+﻿using AdventOfCode.Days;
+
+namespace AdventOfCode.Day2
 {
-    public class Excercise
+    public class Excercise : IDay
     {
         private int Depth;
 
