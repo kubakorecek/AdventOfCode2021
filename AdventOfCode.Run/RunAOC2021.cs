@@ -38,6 +38,8 @@
                 Console.WriteLine("File exists...");
                 Day3.Excercise st = new Day3.Excercise(filepath);
                 st.calc();
+                string t = "TEST@";
+                Console.WriteLine(t.Substring(4));
             }
             else
             {
