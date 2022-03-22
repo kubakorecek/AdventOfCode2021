@@ -22,7 +22,7 @@
             for (int i = 1; i < len; i++)
             {
                 SecondNumber = int.Parse(Numbers[i - 1]);
-                if (SecondNumber > FirstNumber) { Result++; }
+                if (SecondNumber >   { Result++; }
                 FirstNumber = SecondNumber;
             }
         }

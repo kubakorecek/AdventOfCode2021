@@ -36,5 +36,19 @@ namespace AdventOfCode2021_CSharp
 
             return result;
         }
+
+        public int Part2()
+        {
+            int len = Numbers.Count;
+            int second, first = int.MinValue, result = -1;
+            for (int i = 0; i < len; i++)
+            {
+                second = Numbers.Take(i+3).Skip(i).Sum();
+                if (second > first) { result++; }
+                first = second;
+            }
+
+            return result;
+        }
     }
 }

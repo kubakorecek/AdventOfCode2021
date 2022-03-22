@@ -9,15 +9,16 @@ namespace TestAdventOfCode2021_Csharp
     public class UnitTest01
     {
 
-        [DataRow(@"data/day1_test.txt", 7)]
-        [DataRow(@"data/day1.txt", 1298)]
+        [DataRow(@"data/day1_test.txt", 7, 5)]
+        [DataRow(@"data/day1.txt", 1298, 1248)]
         [DataTestMethod]
-        public void TestDay1(string fileName,int expectedResult)
+        public void TestDay1(string fileName,int expectedResult, int expectedResult2)
         {
             var fileContent = File.ReadAllText(fileName);
             var day1 = new Day1(fileContent);
             Assert.IsTrue(day1.Load());
             Assert.AreEqual(expectedResult, day1.Part1());
+            Assert.AreEqual(expectedResult2, day1.Part2());
 
         }
 
