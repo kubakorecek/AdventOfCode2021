@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Day1", "AdventOfCode.Day1\AdventOfCode.Day1.csproj", "{557B2831-C563-4811-A448-D64DFC31594F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Day2", "AdventOfCode.Day2\AdventOfCode.Day2.csproj", "{D6F91B68-5DA5-465C-ACC9-FD1113E41046}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Run", "AdventOfCode.Run\AdventOfCode.Run.csproj", "{691C7BE2-1082-44B5-9EBE-61C1BBB6634E}"
@@ -17,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode.Day3Tests", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utils", "Utils\Utils.csproj", "{3D8A5EFC-5731-428F-982A-0F6B0400DEF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2021_CSharp", "AdventOfCode2021_CSharp\AdventOfCode2021_CSharp.csproj", "{CE94C7DB-8F12-4997-B812-12B90596E86E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfCode2021_CSharp", "AdventOfCode2021_CSharp\AdventOfCode2021_CSharp.csproj", "{CE94C7DB-8F12-4997-B812-12B90596E86E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAdventOfCode2021_Csharp", "TestAdventOfCode2021_Csharp\TestAdventOfCode2021_Csharp.csproj", "{ECF9B0EE-0D22-438C-9A0F-DAF2A7678DB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAdventOfCode2021_Csharp", "TestAdventOfCode2021_Csharp\TestAdventOfCode2021_Csharp.csproj", "{ECF9B0EE-0D22-438C-9A0F-DAF2A7678DB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{557B2831-C563-4811-A448-D64DFC31594F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{557B2831-C563-4811-A448-D64DFC31594F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{557B2831-C563-4811-A448-D64DFC31594F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{557B2831-C563-4811-A448-D64DFC31594F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D6F91B68-5DA5-465C-ACC9-FD1113E41046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D6F91B68-5DA5-465C-ACC9-FD1113E41046}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6F91B68-5DA5-465C-ACC9-FD1113E41046}.Release|Any CPU.ActiveCfg = Release|Any CPU
