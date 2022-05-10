@@ -18,12 +18,6 @@ namespace AdventOfCode2021_CSharp
 
         public bool Load()
         {
-
-            foreach (var line in FileContent.Split('\n').ToList().Select(x => x.Split(' ')).ToList())
-            {
-                var tpl = new Tuple<string, int>(line[0], int.Parse(line[1]));
-                Instructions.Add(tpl);
-            }
             return true;
         }
     }
