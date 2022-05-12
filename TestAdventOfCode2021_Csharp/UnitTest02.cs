@@ -11,14 +11,14 @@ namespace TestAdventOfCode2021_Csharp
 
         [DataRow(@"data/day2_part1_test.txt", 15, 10, 150, 900)]
         [DataTestMethod]
-        public void TestDay2(string fileName,int horizontalPositionExpeceted, int depthExpeceted, int part1, int part2)
+        public void TestDay2(string fileName,int horizontalPositionExpeceted, int aimExcpected, int part1, int part2)
         {
             var fileContent = File.ReadAllText(fileName);
             var day2 = new Day2(fileContent);
             Assert.IsTrue(day2.Load());
-            //day2.Instructions[0];
-            Assert.AreEqual(horizontalPositionExpeceted, day2.Calculate()[0]);
-            Assert.AreEqual(depthExpeceted, day2.Calculate()[1]);
+            Assert.IsTrue(day2.Calculate());
+            Assert.AreEqual(horizontalPositionExpeceted, day2.result.HorizontalPositionl);
+            Assert.AreEqual(aimExcpected, day2.result.Aim);
              Assert.AreEqual(part1, day2.Part1());
              Assert.AreEqual(part2, day2.Part2());
 

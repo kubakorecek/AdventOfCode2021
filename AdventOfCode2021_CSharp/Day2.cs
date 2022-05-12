@@ -5,14 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AdventOfCode2021_CSharp
-{
+{   
+    public struct Measures 
+    {
+        public Measures() 
+        { 
+            Depth = 0;
+            Aim = 0;
+            HorizontalPositionl = 0;
+        
+        }
+
+        public Measures(int depth, int aim, int horizontalPosition)
+        {
+            Depth = depth;
+            Aim = aim;
+            HorizontalPositionl = horizontalPosition;
+
+        }
+        public int Depth { get; init; }
+        public int Aim { get; init; }
+        public int HorizontalPositionl { get; init; }
+
+
+
+    }
     public class Day2 : ILoader
     {
         public string FileContent { get; }
 
-        public List<Tuple<string, int>> Instructions { get; set; } = new List<Tuple<string, int>>();
+        public List<(string Instruction, int Value)> Instructions { get; set; } = new List<(string Instruction, int Value)>();
 
-        public List<int> result { get; set; } = new List<int>() ;
+        public Measures result { get; set; } = new Measures() ;
         public Day2(string fileContent)
         {
             FileContent = fileContent;
@@ -22,7 +46,7 @@ namespace AdventOfCode2021_CSharp
         {
             foreach (var line in FileContent.Split('\n').ToList().Select(x => x.Split(' ')).ToList())
             {
-                var tpl = new Tuple<string, int>(line[0], int.Parse(line[1]));
+                var tpl = (Instruction : line[0], Value : int.Parse(line[1]));
                 Instructions.Add(tpl);
             }
             return true;
@@ -30,46 +54,44 @@ namespace AdventOfCode2021_CSharp
 
         public int Part1()
         {
-            return result[0] * result[1];
+            return result.Aim * result.HorizontalPositionl;
         }
 
         public int Part2()
         {
-            return result[0] * result[2] ;
+            return result.Depth * result.HorizontalPositionl;
         }
 
-        public List<int> Calculate()
+        public bool Calculate()
         {
             int horizontalPosition = 0;
             int depth = 0;
             int aim = 0;
             foreach(var tpl in Instructions) 
             {
-                switch (tpl.Item1)
+                switch (tpl.Instruction)
                 {
                     case "forward":
-                        horizontalPosition += tpl.Item2;
-                        depth += aim * tpl.Item2;
+                        horizontalPosition += tpl.Value;
+                        depth += aim * tpl.Value;
                         break;
 
                     case "down":
-                        aim += tpl.Item2;
+                        aim += tpl.Value;
                         break;
 
                     case "up":
-                        aim -= tpl.Item2;
+                        aim -= tpl.Value;
                         break;
 
                     default:
                         Console.WriteLine("wrong data!!!!!!");
-                        throw new Exception(tpl.Item1);
+                        throw new Exception(tpl.Instruction);
 
                 }
             }
-            result.Add(horizontalPosition);
-            result.Add(aim);
-            result.Add(depth);
-            return result;
+            result = new Measures(depth, aim, horizontalPosition);
+            return true;
         }
     }
 }
