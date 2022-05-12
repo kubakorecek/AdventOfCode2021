@@ -17,8 +17,8 @@ namespace TestAdventOfCode2021_Csharp
             var day2 = new Day2(fileContent);
             Assert.IsTrue(day2.Load());
             Assert.IsTrue(day2.Calculate());
-            Assert.AreEqual(horizontalPositionExpeceted, day2.result.HorizontalPositionl);
-            Assert.AreEqual(aimExcpected, day2.result.Aim);
+            Assert.AreEqual(horizontalPositionExpeceted, day2.Result.HorizontalPositionl);
+            Assert.AreEqual(aimExcpected, day2.Result.Aim);
              Assert.AreEqual(part1, day2.Part1());
              Assert.AreEqual(part2, day2.Part2());
 

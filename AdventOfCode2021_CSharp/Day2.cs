@@ -8,14 +8,6 @@ namespace AdventOfCode2021_CSharp
 {   
     public struct Measures 
     {
-        public Measures() 
-        { 
-            Depth = 0;
-            Aim = 0;
-            HorizontalPositionl = 0;
-        
-        }
-
         public Measures(int depth, int aim, int horizontalPosition)
         {
             Depth = depth;
@@ -36,7 +28,7 @@ namespace AdventOfCode2021_CSharp
 
         public List<(string Instruction, int Value)> Instructions { get; set; } = new List<(string Instruction, int Value)>();
 
-        public Measures result { get; set; } = new Measures() ;
+        public Measures Result { get; set; } = new Measures() ;
         public Day2(string fileContent)
         {
             FileContent = fileContent;
@@ -54,12 +46,12 @@ namespace AdventOfCode2021_CSharp
 
         public int Part1()
         {
-            return result.Aim * result.HorizontalPositionl;
+            return Result.Aim * Result.HorizontalPositionl;
         }
 
         public int Part2()
         {
-            return result.Depth * result.HorizontalPositionl;
+            return Result.Depth * Result.HorizontalPositionl;
         }
 
         public bool Calculate()
@@ -90,7 +82,7 @@ namespace AdventOfCode2021_CSharp
 
                 }
             }
-            result = new Measures(depth, aim, horizontalPosition);
+            Result = new Measures(depth, aim, horizontalPosition);
             return true;
         }
     }
