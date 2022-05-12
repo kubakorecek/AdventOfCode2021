@@ -9,21 +9,34 @@ namespace TestAdventOfCode2021_Csharp
     public class UnitTest02
     {
 
-        [DataRow(@"data/day2_part1_test.txt", 10, 15, 150)]
+        [DataRow(@"data/day2_part1_test.txt", 15, 10, 150, 900)]
         [DataTestMethod]
-        public void TestDay1(string fileName,int horizontalPositionExpeceted, int depthExpeceted, int result)
+        public void TestDay2(string fileName,int horizontalPositionExpeceted, int depthExpeceted, int part1, int part2)
         {
             var fileContent = File.ReadAllText(fileName);
             var day2 = new Day2(fileContent);
             Assert.IsTrue(day2.Load());
-            /*Assert.AreEqual(horizontalPositionExpeceted, day1.Part1());
-            Assert.AreEqual(horizontalPositionExpeceted, day1.Part2());
-            Assert.AreEqual(horizontalPositionExpeceted, day1.Part2());*/
+            //day2.Instructions[0];
+            Assert.AreEqual(horizontalPositionExpeceted, day2.Calculate()[0]);
+            Assert.AreEqual(depthExpeceted, day2.Calculate()[1]);
+             Assert.AreEqual(part1, day2.Part1());
+             Assert.AreEqual(part2, day2.Part2());
 
         }
 
 
-        
+        [DataRow(@"data/day2.txt", 2147104, 2044620088)]
+        [DataTestMethod]
+        public void TestDay2Res(string fileName, int part1, int part2)
+        {
+            var fileContent = File.ReadAllText(fileName);
+            var day2 = new Day2(fileContent);
+            Assert.IsTrue(day2.Load());
+            day2.Calculate();
+            Assert.AreEqual(part1, day2.Part1());
+            Assert.AreEqual(part2, day2.Part2());
+
+        }
 
 
 
