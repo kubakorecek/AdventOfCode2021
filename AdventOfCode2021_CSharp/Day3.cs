@@ -22,11 +22,14 @@ namespace AdventOfCode2021_CSharp
 
         public bool Load()
         {
-            Binaries = FileContent.Split('\n').ToList();
+            long b;
+            Binaries = FileContent.Split("\r\n").ToList();
+            b = Convert.ToInt64(Binaries[0], 2);
+
             return true;
         }
 
-        public List<string> theLeastCommon(List<string> data, int pos = -1)
+        public List<string> TheLeastCommon(List<string> data, int pos = -1)
         {
             if (pos < 0) { throw new ArgumentException("Parameter cannot be <0", nameof(pos)); }
 
@@ -53,6 +56,19 @@ namespace AdventOfCode2021_CSharp
             }
 
             return Data1;
+        }
+
+        public static double BinaryToDecimal(string v)
+        {
+            var counter = 0;
+            var length = v.Length;
+            var decimalValue = 0.0;
+            foreach (var c in v)
+            {
+                decimalValue += c=='1' ? Math.Pow(2, length - counter-1) : 0;
+                counter++;
+            }
+            return decimalValue;
         }
     }
 }

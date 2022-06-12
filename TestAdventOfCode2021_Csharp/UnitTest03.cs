@@ -9,14 +9,19 @@ namespace TestAdventOfCode2021_Csharp
     public class UnitTest03
     {
 
-        [DataRow(@"data/day3_test.txt", 9, 22, 198)]
+        [DataRow(@"data/day3_part1_test.txt", 9, 22, 198)]
         [DataTestMethod]
-        public void TestDay1(string fileName, int expectedRate, int gammaRate, int consumption)
+        public void TestDay3(string fileName, int expectedRate, int gammaRate, int consumption)
         {
             var fileContent = File.ReadAllText(fileName);
-            var day1 = new Day1(fileContent);
+            var day1 = new Day3(fileContent);
             Assert.IsTrue(day1.Load());
 
+        }
+        [TestMethod]
+        public void TestBinaryToDecimal( )
+        {
+            Assert.AreEqual(22.0, Day3.BinaryToDecimal("10110"));
         }
 
 
@@ -30,10 +35,10 @@ namespace TestAdventOfCode2021_Csharp
         {"01110", "11111"};
 
             [TestMethod()]
-            public void theLeastCommonTest()
+            public void TheLeastCommonTest()
             {
                 Day3 test = new Day3(data);
-                List<string> res = test.theLeastCommon(data, position);
+                List<string> res = test.TheLeastCommon(data, position);
                 CollectionAssert.AreEqual(expected, res);
             }
         }
