@@ -100,10 +100,10 @@ namespace AdventOfCode2021_CSharp
             }
             if (Data0.Count > Data1.Count)
             {
-                return Data0;
+                return TheLeastCommon( Data0, pos--);
             }
 
-            return Data1;
+            return TheLeastCommon(Data1, pos--);
         }
 
         public static double BinaryToDecimal(string v)
