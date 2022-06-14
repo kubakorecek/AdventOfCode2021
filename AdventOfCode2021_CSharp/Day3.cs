@@ -8,8 +8,15 @@ namespace AdventOfCode2021_CSharp
 {
     public class Day3 : ILoader
     {
+        public struct SubmarineData
+        {
+            public double gammaRate;
+            public double epsilonRate;
+            public double consumption;
+        }
         public string FileContent { get; }
         public List<string> Binaries { get; set; }
+
         public Day3(string fileContent)
         {
             FileContent = fileContent;
@@ -28,6 +35,47 @@ namespace AdventOfCode2021_CSharp
 
             return true;
         }
+
+        public SubmarineData Consumptions()
+        {
+            SubmarineData submarineData = new SubmarineData();
+            int size = Binaries.First().Length;
+            int[] counter = new int[size];
+            Array.Fill(counter, 0);
+
+            foreach (string str in Binaries)
+            {
+                for (int i = 0; i < str.Length; i++)
+                {
+                    if (str[i] == '1') { counter[i] += 1; }
+                }
+
+            }
+
+            StringBuilder theMostCommonBits = new StringBuilder("", size);
+            StringBuilder theLeastCommonBits = new StringBuilder("", size);
+            for (int i = 0; i < counter.Length; i++)
+            {
+
+                if (counter[i] > Binaries.Count / 2)
+                {
+                    theMostCommonBits.Append('1');
+                    theLeastCommonBits.Append('0');
+                }
+                else
+                {
+                    theMostCommonBits.Append('0');
+                    theLeastCommonBits.Append('1');
+                }
+            }
+            submarineData.epsilonRate = Day3.BinaryToDecimal(theLeastCommonBits.ToString());
+            submarineData.gammaRate = Day3.BinaryToDecimal(theMostCommonBits.ToString());
+
+            submarineData.consumption = submarineData.gammaRate * submarineData.epsilonRate;
+            return submarineData;
+        }
+
+
 
         public List<string> TheLeastCommon(List<string> data, int pos = -1)
         {
@@ -65,7 +113,7 @@ namespace AdventOfCode2021_CSharp
             var decimalValue = 0.0;
             foreach (var c in v)
             {
-                decimalValue += c=='1' ? Math.Pow(2, length - counter-1) : 0;
+                decimalValue += c == '1' ? Math.Pow(2, length - counter - 1) : 0;
                 counter++;
             }
             return decimalValue;
