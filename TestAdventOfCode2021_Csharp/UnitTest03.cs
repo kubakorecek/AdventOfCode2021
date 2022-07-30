@@ -48,6 +48,33 @@ namespace TestAdventOfCode2021_Csharp
             Assert.AreEqual(22.0, Day3.BinaryToDecimal("10110"));
         }
 
+        [DataRow(@"data/day3_part1_test.txt", 230)]
+        [DataTestMethod]
+        public void TestDay3Part2(string fileName, int consumption)
+        {
+            var fileContent = File.ReadAllText(fileName);
+            var day3 = new Day3(fileContent);
+            Assert.IsTrue(day3.Load());
+             day3.LifeSupport();
+             var reusult = day3.LifeSupport();
+             Assert.AreEqual(consumption, reusult.support);
+
+        }
+
+
+        [DataRow(@"data/day3_part1.txt", 7863147)]
+        [DataTestMethod]
+        public void TestDay3Part2Real(string fileName, int consumption)
+        {
+            var fileContent = File.ReadAllText(fileName);
+            var day3 = new Day3(fileContent);
+            Assert.IsTrue(day3.Load());
+            day3.LifeSupport();
+            var reusult = day3.LifeSupport();
+            Assert.AreEqual(consumption, reusult.support);
+
+        }
+
 
         [TestClass()]
         public class ExcerciseTests
