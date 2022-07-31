@@ -3,9 +3,7 @@
     public class Day4
     {
         public string FileContent { get; }
-
         public List<int> Numbers { get; private set; } = new List<int>();
-
         public List<Board> Boards { get; private set; } = new List<Board>();
 
 

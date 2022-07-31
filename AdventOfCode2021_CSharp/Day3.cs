@@ -85,15 +85,8 @@ namespace AdventOfCode2021_CSharp
             return submarineData;
         }
 
-        private List<string> _SeparateLists(List<string> data,  int pos = 0, Type t = Type.CO2)
+        private void _valiadate(ref List<string> data, ref int pos) 
         {
-            if(data.Count == 1) { return data; }
-
-            if (data.Count == 2) 
-            { 
-                return (t == Type.CO2) ? data.Where(x => x[pos] == '0').ToList() : data.Where(x => x[pos] == '1').ToList();
-            }
-
             if (pos > data.First().Length - 1)
             {
                 throw new ArgumentException($"Parameter is too big" +
@@ -104,6 +97,19 @@ namespace AdventOfCode2021_CSharp
                 throw new ArgumentException($"Parameter is too small" +
                     $" par:{pos} size:{data.First().Length}", nameof(pos));
             }
+        }
+        private List<string> _SeparateLists(List<string> data,  int pos = 0, Type t = Type.CO2)
+        {
+
+            _valiadate(ref data , ref pos);
+
+            if (data.Count == 1) { return data; }
+
+            if (data.Count == 2) 
+            { 
+                return (t == Type.CO2) ? data.Where(x => x[pos] == '0').ToList() : data.Where(x => x[pos] == '1').ToList();
+            }
+
             var ch1 = '1';
             var ch2 = '0';
 
