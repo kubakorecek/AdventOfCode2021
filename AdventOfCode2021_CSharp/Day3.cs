@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,8 +18,8 @@ namespace AdventOfCode2021_CSharp
 
         public struct LifeData
         {
-            public double CO2;
-            public double O2;
+            public double CO2 { get; set; }
+            public double OXYGEN_RATING { get; set; }
             public double support;
         }
 
@@ -85,7 +86,7 @@ namespace AdventOfCode2021_CSharp
             return submarineData;
         }
 
-        private void _valiadate(ref List<string> data, ref int pos) 
+        private void _valiadate(ref List<string> data, ref int pos)
         {
             if (pos > data.First().Length - 1)
             {
@@ -98,16 +99,16 @@ namespace AdventOfCode2021_CSharp
                     $" par:{pos} size:{data.First().Length}", nameof(pos));
             }
         }
-        private List<string> _SeparateLists(List<string> data,  int pos = 0, Type t = Type.CO2)
+        private List<string> _SeparateLists(List<string> data, int pos = 0, SubmarneType t = SubmarneType.CO2)
         {
 
-            _valiadate(ref data , ref pos);
+            _valiadate(ref data, ref pos);
 
             if (data.Count == 1) { return data; }
 
-            if (data.Count == 2) 
-            { 
-                return (t == Type.CO2) ? data.Where(x => x[pos] == '0').ToList() : data.Where(x => x[pos] == '1').ToList();
+            if (data.Count == 2)
+            {
+                return (t == SubmarneType.CO2) ? data.Where(x => x[pos] == '0').ToList() : data.Where(x => x[pos] == '1').ToList();
             }
 
             var ch1 = '1';
@@ -115,17 +116,19 @@ namespace AdventOfCode2021_CSharp
 
             if (data.Where(x => x[pos] == ch2).Count() > data.Where(x => x[pos] == ch1).Count())
             {
-                if (t == Type.CO2) 
+                if (t == SubmarneType.CO2)
                 {
                     return data.Where(x => x[pos] == ch1).ToList();
-                }else 
+                }
+                else
                 {
                     return data.Where(x => x[pos] == ch2).ToList();
                 }
-                
-            } else
+
+            }
+            else
             {
-                if (t == Type.CO2)
+                if (t == SubmarneType.CO2)
                 {
                     return data.Where(x => x[pos] == ch2).ToList();
                 }
@@ -134,53 +137,65 @@ namespace AdventOfCode2021_CSharp
                     return data.Where(x => x[pos] == ch1).ToList();
                 }
             }
-            
+
 
 
         }
 
         public LifeData LifeSupport()
         {
-            // First division 
-
-            LifeData res = new LifeData();
-            Temp = _SeparateLists(Binaries, 0, Type.CO2);
+            //var res = new LifeData();
+            Type type = typeof(LifeData);
 
 
-            // CO2
+            
+            var tmpList = new List<LifeData>();
             int i = 1;
+
+            object? value = Activator.CreateInstance(type);
+
+            foreach (var x in Enum.GetValues(typeof(SubmarneType)).Cast<SubmarneType>()) 
+            {
+                i = 1;
+                var s = x.ToString();
+                var prop = type.GetProperty(s);
+                Temp = _SeparateLists(Binaries, 0, x);
+
+                while (i < Binaries.First().Length)
+                {
+                    Temp = _SeparateLists(Temp, i, x);
+                    if (Temp.Count() == 1)
+                    {
+                        break;
+                    }
+                    i++;
+                }
+                prop.SetValue(value, BinaryToDecimal(Temp.First()), null);
+            }
+
+            var res = (LifeData)value;
+
+           
+
+            /*i = 1;
+            Temp = _SeparateLists(Binaries, 0, SubmarneType.OXYGEN_RATING);
             while (i < Binaries.First().Length)
             {
-                Temp = _SeparateLists(Temp, i, Type.CO2);
+                Temp = _SeparateLists(Temp, i, SubmarneType.OXYGEN_RATING);
                 if (Temp.Count() == 1)
                 {
                     break;
                 }
                 i++;
             }
-
-            res.CO2 = BinaryToDecimal(Temp.First());
-
-            i = 1;
-            Temp = _SeparateLists(Binaries, 0, Type.OXYGEN_RATING);
-            while (i < Binaries.First().Length)
-            {
-                Temp = _SeparateLists(Temp, i, Type.OXYGEN_RATING);
-                if (Temp.Count() == 1)
-                {
-                    break;
-                }
-                i++;
-            }
-            res.O2 = BinaryToDecimal(Temp.First());
-            res.support = res.CO2 * res.O2;
+            res.O2 = BinaryToDecimal(Temp.First());*/
+            res.support = res.CO2 * res.OXYGEN_RATING;
 
             return res;
-            //
         }
 
-        public List<string> TheLeastCommon(List<string> data, int pos = -1)
-        {
+        public List<string> TheLeastCommon(List<string>data, int pos = -1)
+        { 
             if (pos < 0) { throw new ArgumentException("Parameter cannot be <0", nameof(pos)); }
 
             List<string> Data0 = new List<string>();

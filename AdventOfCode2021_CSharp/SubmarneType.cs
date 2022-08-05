@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode2021_CSharp
 {
-    enum Type
+    enum SubmarneType
     {
         CO2,
         OXYGEN_RATING
