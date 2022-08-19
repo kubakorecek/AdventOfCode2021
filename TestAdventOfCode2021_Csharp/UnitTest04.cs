@@ -24,6 +24,24 @@ namespace TestAdventOfCode2021_Csharp
 
         }
 
+        [DataRow(@"data/data04_test.txt", 4512)]
+        [DataRow(@"data/day04Part1.txt", 28082)]
+        [DataTestMethod]
+        public void TestDay4P2(string fileName, int expectedResult)
+        {
+            var fileContent = File.ReadAllText(fileName);
+            var day4 = new Day4(fileContent);
+
+            var success = day4.Load();
+            Assert.IsTrue(success);
+
+            Assert.AreEqual(expectedResult, day4.PartTwo());
+
+
+        }
+
+
+
         [DataRow(@"data/board04_test.txt")]
         [DataTestMethod]
         public void TestBoard(string fileName)

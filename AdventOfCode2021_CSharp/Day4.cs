@@ -47,7 +47,9 @@
                     board.RemoveElement(number);
                     if (board.IsWinner())
                     {
+                        var t = board.Sum();
                         win = number * board.Sum();
+                        continue;
                     }
                 };
             }
