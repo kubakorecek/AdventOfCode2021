@@ -49,8 +49,8 @@ namespace AdventOfCode2021_CSharp
             Points.Add(Start);
             if (Start.x == End.x)
             {
-                Gradient = 0;
-                Const = 0;
+                Gradient = double.PositiveInfinity;
+                Const = double.NegativeInfinity;
                 addYPoints();
                 Type = LineType.VERTICAL;
 
