@@ -12,13 +12,15 @@ namespace AdventOfCode2021_CSharp
 
         public Point End { get; set; } = new Point();
 
+        public LineType Type { get; } = LineType.OTHER;
+
         public double Gradient { get; }
 
         public double Const { get; }
 
         public List<Point> Points { get; set; } = new List<Point>();
 
-        public Line() 
+        public Line()
         {
             throw new ArgumentException("Line is defined by TWO points!!!");
         }
@@ -27,8 +29,9 @@ namespace AdventOfCode2021_CSharp
         {
             Start = start;
             End = end;
-            Gradient = (Start.y - End.y) / (Start.x - End.x);
 
+            
+                       
             if (Start.x > End.x || (Start.x == End.x && Start.y > End.y))
             {
                 Point tmp;
@@ -37,26 +40,71 @@ namespace AdventOfCode2021_CSharp
                 Start = tmp;
             }
 
-            Const = Start.y - Start.x * Gradient;
-            _addPoints(Start , End);
+            
 
 
+
+            
+
+            Points.Add(Start);
+            if (Start.x == End.x)
+            {
+                Gradient = 0;
+                Const = 0;
+                addYPoints();
+                Type = LineType.VERTICAL;
+
+            }
+            else if (Start.y == End.y)
+            {
+                Const = Start.y;
+                Gradient = 0;
+                addXPoints();
+                Type = LineType.HORIZONTAL;
+            }else 
+            {
+                Const = Start.y - Start.x * Gradient;
+                Gradient = (Start.y - End.y) / (Start.x - End.x);
+                addOtherPoints();
+                Type = LineType.OTHER;
+            }
+
+            Points.Add(End);
 
         }
 
-        private void _addPoints(Point start, Point end) 
+        private void addXPoints() 
         {
-            Points.Add(start);
-            int startX = start.x + 1;
-            while (startX < end.x) 
-            {
-                int y = (int)(startX * Gradient + Const);
+            int startX = Start.x + 1;
+            int y = (int)Const;
+            while (startX < End.x) 
+            {                
                 Points.Add(new Point(startX, y));
                 startX++;
             }
+        }
 
+        private void addYPoints()
+        {
+            int starty = Start.y + 1;
+            while (starty < End.y)
+            {
+               
+                Points.Add(new Point(Start.x,starty));
+                starty++;
+            }
+        }
 
-            Points.Add(end);
+        private void addOtherPoints()
+        {
+            int startX = Start.x + 1;
+            
+            while (startX < End.x)
+            {
+                var y = (int)(Gradient * startX + Const);
+                Points.Add(new Point(startX, y));
+                startX++;
+            }
         }
 
 

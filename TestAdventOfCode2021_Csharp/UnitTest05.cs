@@ -36,17 +36,31 @@ namespace TestAdventOfCode2021_Csharp
             }
 
             [TestMethod()]
-            public void GetPointLine()
+            public void GetPointLineX()
             {
-                List<Point> points = new List<Point>(){
+                List<Point> pointsx = new List<Point>(){
                new Point(-1, 0),new Point(0,0),new Point(1, 0),new Point(2, 0),new Point(3, 0),new Point(4, 0)
              };
 
+
                 Line line = new Line(start, end);
-                CollectionAssert.AreEqual(points, line.Points);
+                CollectionAssert.AreEqual(pointsx, line.Points);
+            }
+
+            [TestMethod()]
+            public void GetPointLineY()
+            {
+                List<Point> pointsx = new List<Point>(){
+               new Point(0, 0),new Point(0,1),new Point(0, 2)
+             };
+
+
+                Line line = new Line(new Point(0,0), new Point(0,2));
+                CollectionAssert.AreEqual(pointsx, line.Points);
             }
 
 
+            
             [DataRow(@"data/day5_part1_test.txt", 5)]
             [DataTestMethod]
             public void TestDay(string fileName, int expectedResult)
@@ -57,7 +71,7 @@ namespace TestAdventOfCode2021_Csharp
                 //Assert.AreEqual(expectedResult, day1.Part1());
 
             }
-
+            
 
 
         }
