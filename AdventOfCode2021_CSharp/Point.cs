@@ -10,13 +10,10 @@ namespace AdventOfCode2021_CSharp
     {
         public int x { get; set; }
         public int y { get; set; }
-
-        public Int64 CantorPair {get; } 
         public Point(int x, int y)
         {
             this.x = x;
             this.y = y;
-            this.CantorPair = Point.CantorHashing(this);
         }
 
         public Point()
@@ -26,7 +23,7 @@ namespace AdventOfCode2021_CSharp
 
         // https://en.wikipedia.org/wiki/Pairing_function#Cantor_pairing_function
         // (a + b) * (a + b + 1) / 2 + a; where a, b >= 0
-        public static Int64 CantorHashing(Point a)
+        public static int CantorHashing(Point a)
         {
             return ((a.y + a.x) * (a.y + a.x + 1) / 2) + a.y;
         }
@@ -45,8 +42,11 @@ namespace AdventOfCode2021_CSharp
                 {
                     return false;
                 }
-                return (this.CantorPair == ((Point)obj).CantorPair);
+                return (this.GetHashCode() == ((Point)obj).GetHashCode());
             }
         }
+
+        public override int GetHashCode() => CantorHashing(this);
+        
     }
 }

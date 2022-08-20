@@ -37,6 +37,6 @@ namespace AdventOfCode2021_CSharp
             return true;
         }
 
-        public void Part1()
+        public void Part1() { }
     }
 }

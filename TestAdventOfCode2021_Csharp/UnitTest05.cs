@@ -19,7 +19,7 @@ namespace TestAdventOfCode2021_Csharp
             public void Points()
             {
                 Point test = new Point(47, 32);
-                Assert.AreEqual(3192, test.CantorPair);
+                Assert.AreEqual(3192, test.GetHashCode());
             }
 
 
