@@ -18,6 +18,7 @@ namespace AdventOfCode2021_CSharp
 
         public Point()
         {
+            Console.WriteLine("Point will be initialized as origin ( 0, 0 )");
 
         }
 
