@@ -43,7 +43,7 @@ namespace AdventOfCode2021_CSharp
                 {
                     return false;
                 }
-                return (this.GetHashCode() == ((Point)obj).GetHashCode());
+                return (this.GetHashCode() == obj.GetHashCode());
             }
         }
 
