@@ -19,24 +19,69 @@ namespace AdventOfCode2021_CSharp
 
         public bool Load()
         {
-            Lines = FileContent.Split("\r\n").ToList().Select(x => x.Split("-> ")).ToList()
-               .Select(
-                x =>
-                new Line(
-
-                new Point(int.Parse(x.ElementAt(0).Split(",").ToList().ElementAt(0).ToString())
-                       , int.Parse(x.ElementAt(0).Split(",").ToList().ElementAt(1).ToString())
-
-                ),
-                   new Point(int.Parse(x.ElementAt(1).Split(",").ToList().ElementAt(0).ToString())
-                       , int.Parse(x.ElementAt(1).Split(",").ToList().ElementAt(1).ToString()))
-
-                )
-
-                ).ToList();
+            Lines = FileContent.Split("\r\n").Select(s => s.Replace(" -> ", ",").Split(",").Select(Int32.Parse).ToList()).Select(n => new Line(
+                 new Point(n[0], n[1]), new Point(n[2], n[3]))).ToList();
             return true;
         }
 
-        public void Part1() { }
+        public int Part1()
+        {
+
+            Dictionary<Point, int> board = new();
+
+            foreach (var item in Lines)
+            {
+                if (item.Type == LineType.HORIZONTAL || item.Type == LineType.VERTICAL)
+                {
+                    foreach (var p in item.Points)
+                    {
+                        if (board.ContainsKey(p))
+                        {
+                            board[p] += 1;
+                        }
+                        else
+                        {
+                            board.Add(p, 1);
+                        }
+
+
+                    }
+
+
+                }
+                
+            }
+            var t = board.Where(x => x.Value > 1).Count();
+            return t;
+        }
+
+        public int Part2()
+        {
+
+            Dictionary<Point, int> board = new();
+
+            foreach (var item in Lines)
+            {
+                foreach (var p in item.Points)
+                    {
+                        if (board.ContainsKey(p))
+                        {
+                            board[p] += 1;
+                        }
+                        else
+                        {
+                            board.Add(p, 1);
+                        }
+
+
+                    }
+
+
+                
+
+            }
+            var t = board.Where(x => x.Value > 1).Count();
+            return t;
+        }
     }
 }

@@ -75,8 +75,8 @@ namespace AdventOfCode2021_CSharp
 
         private void addXPoints() 
         {
-            int startX = Start.x + 1;
-            int y = (int)Const;
+            var startX = Start.x + 1;
+            var y = (int)Const;
             while (startX < End.x) 
             {                
                 Points.Add(new Point(startX, y));
@@ -86,7 +86,7 @@ namespace AdventOfCode2021_CSharp
 
         private void addYPoints()
         {
-            int starty = Start.y + 1;
+            var starty = Start.y + 1;
             while (starty < End.y)
             {
                

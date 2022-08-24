@@ -68,11 +68,46 @@ namespace TestAdventOfCode2021_Csharp
                 var fileContent = File.ReadAllText(fileName);
                 var day = new Day5(fileContent);
                 Assert.IsTrue(day.Load());
-                //Assert.AreEqual(expectedResult, day1.Part1());
+                //day.Part1();
+                Assert.AreEqual(expectedResult, day.Part1());
 
             }
-            
 
+            [DataRow(@"data/day5_part1.txt", 5280)]
+            [DataTestMethod]
+            public void TestDay5_part1(string fileName, int expectedResult)
+            {
+                var fileContent = File.ReadAllText(fileName);
+                var day = new Day5(fileContent);
+                Assert.IsTrue(day.Load());
+                //day.Part1();
+                Assert.AreEqual(expectedResult, day.Part1());
+
+            }
+
+            [DataRow(@"data/day5_part1_test.txt", 5)]
+            [DataTestMethod]
+            public void TestDayPart2(string fileName, int expectedResult)
+            {
+                var fileContent = File.ReadAllText(fileName);
+                var day = new Day5(fileContent);
+                Assert.IsTrue(day.Load());
+                //day.Part1();
+                Assert.AreEqual(expectedResult, day.Part2());
+
+            }
+
+            [DataRow(@"data/day5_part1.txt", 5280)]
+            [DataTestMethod]
+            public void TestDay5_part2(string fileName, int expectedResult)
+            {
+                var fileContent = File.ReadAllText(fileName);
+                var day = new Day5(fileContent);
+                Assert.IsTrue(day.Load());
+                //day.Part1();
+                Assert.AreEqual(expectedResult, day.Part1());
+
+            }
 
         }
 
