@@ -19,7 +19,9 @@ namespace AdventOfCode2021_CSharp
 
         public bool Load()
         {
-            Lines = FileContent.Split("\r\n").Select(s => s.Replace(" -> ", ",").Split(",").Select(Int32.Parse).ToList()).Select(n => new Line(
+            Lines = FileContent.Split("\r\n").Select(s => s.Replace(" -> ", ",")
+                .Split(",").Select(Int32.Parse).ToList())
+                .Select(n => new Line(
                  new Point(n[0], n[1]), new Point(n[2], n[3]))).ToList();
             return true;
         }

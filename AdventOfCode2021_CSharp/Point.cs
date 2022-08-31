@@ -14,11 +14,12 @@ namespace AdventOfCode2021_CSharp
         {
             this.x = x;
             this.y = y;
+            Console.WriteLine($"Point will be initialized as origin ( {x}, {y} )");
         }
 
         public Point()
         {
-            Console.WriteLine("Point will be initialized as origin ( 0, 0 )");
+            Console.WriteLine("Point will be initialized as origin in empty constructor ( 0, 0 )");
 
         }
 
@@ -48,6 +49,12 @@ namespace AdventOfCode2021_CSharp
         }
 
         public override int GetHashCode() => CantorHashing(this);
-        
+
+
+        public override string ToString()
+        {
+            return $"x,y = ( {x}, {y} )";
+        }
+
     }
 }

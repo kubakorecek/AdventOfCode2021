@@ -8,9 +8,9 @@ namespace AdventOfCode2021_CSharp
 {
     public class Line
     {
-        public Point Start { get; set; } = new Point();
+        public Point Start { get; set; }
 
-        public Point End { get; set; } = new Point();
+        public Point End { get; set; } 
 
         public LineType Type { get; } = LineType.OTHER;
 
@@ -63,8 +63,8 @@ namespace AdventOfCode2021_CSharp
                 Type = LineType.HORIZONTAL;
             }else 
             {
-                Const = Start.y - Start.x * Gradient;
                 Gradient = (Start.y - End.y) / (Start.x - End.x);
+                Const = Start.y - (Start.x * Gradient);                
                 addOtherPoints();
                 Type = LineType.OTHER;
             }
