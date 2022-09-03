@@ -4,29 +4,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace AdventOfCode2021_CSharp.data_structures.linked_lists
 {
-    public class SingleLinkedList<T> : LinkedList<T>, ICollection<T>
+    public class SingleLinkedList<T> : LinkedList< SingleLinkedListNode<T>>, ICollection<T>
     {
-        SingleLinkedListNode<T> head = null;
+        public T? Head => head!.Value;
 
-        SingleLinkedListNode<T> tail = null;
-
-
-
-
+        public T? Tail
+        {
+            get => tail!.Value;
+        }
 
         #region Add
-        protected override void AddHead(T value)
+        protected void AddHead(T value)
         {
-            SingleLinkedListNode < T > node = new SingleLinkedListNode<T>(value);
+            AddHead(new SingleLinkedListNode<T>(value));
+        }
 
-            if ( head == null) 
+        protected override void AddHead(SingleLinkedListNode<T> node)
+        {
+            if (head == null)
             {
                 head = node;
                 tail = node;
-            } else 
+            }
+            else
             {
                 node.Next = head;
                 head = node;
