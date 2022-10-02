@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.IO;
 
-namespace TestAdventOfCode2021_Csharp
+namespace TestAdventOfCode2021Csharp
 {
     [TestClass]
     public class UnitTest05

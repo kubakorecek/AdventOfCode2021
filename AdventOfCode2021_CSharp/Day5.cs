@@ -8,7 +8,7 @@ namespace AdventOfCode2021_CSharp
 {
     public class Day5 : ILoader
     {
-        public List<Line> Lines { get; set; }
+        public List<Line>? Lines { get; set; }
 
         public Day5(string fileContent)
         {

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using static AdventOfCode2021_CSharp.Day3;
 
-namespace TestAdventOfCode2021_Csharp
+namespace TestAdventOfCode2021Csharp
 {
     [TestClass]
     public class UnitTest03

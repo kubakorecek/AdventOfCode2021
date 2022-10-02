@@ -15,5 +15,7 @@ namespace AdventOfCode2021_CSharp.data_structures.linked_lists
         protected TNode? tail { get; set; } = null;
         protected abstract void AddHead(TNode value);
 
+        protected abstract void AddTail(TNode value);
+
     }
 }

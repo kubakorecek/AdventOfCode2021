@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AdventOfCode2021_CSharp.data_structures.linked_lists;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestAdventOfCode2021_Csharp.data_strucutres.linked_lists
+namespace TestAdventOfCode2021Csharp.data_strucutres.linked_lists
 {
     [TestClass]
     public class UnitTestNode

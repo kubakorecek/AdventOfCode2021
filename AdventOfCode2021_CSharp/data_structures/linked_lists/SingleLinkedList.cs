@@ -42,6 +42,29 @@ namespace AdventOfCode2021_CSharp.data_structures.linked_lists
             AddHead(item);
         }
 
+        public void Add(SingleLinkedListNode<T> node)
+        {
+            AddHead(node);
+        }
+
+        public void AddTail(T value)
+        {
+            AddTail(new SingleLinkedListNode<T>(value)); 
+        }
+
+        protected override void AddTail(SingleLinkedListNode<T> node)
+        {
+            if (head == null)
+            {
+                head = node;
+                tail = node;
+            }
+            else
+            {
+                tail.Next = node;
+                node = tail;
+            }
+        }
         #endregion
         public int Count => throw new NotImplementedException();
 
