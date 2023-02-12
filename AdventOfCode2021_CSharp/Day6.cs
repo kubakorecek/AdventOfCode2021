@@ -44,5 +44,10 @@
             }
         return fishTimer[days].Count;
         }
+
+        public int PartOptimzaded(int days)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

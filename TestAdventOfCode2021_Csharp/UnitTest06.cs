@@ -37,5 +37,29 @@ namespace TestAdventOfCode2021Csharp
             Assert.AreEqual(fishes, day6.Part1Niave(days));
 
         }
+
+        [DataRow(@"data/day6_test2.txt", 5, 18)]
+        [DataTestMethod]
+        public void TestDay6PartSmall(string fileName, int fishes, int days)
+        {
+            var fileContent = File.ReadAllText(fileName);
+            var day6 = new Day6(fileContent);
+            Assert.IsTrue(day6.Load());
+            Assert.AreEqual(fishes, day6.Part1Niave(days));
+
+        }
+
+        [DataRow(@"data/day6_test1.txt", 26, 18)]
+        [DataRow(@"data/day6_test1.txt", 5934, 80)]
+        [DataTestMethod]
+        public void TestDay6Part2(string fileName, int fishes, int days)
+        {
+            var fileContent = File.ReadAllText(fileName);
+            var day6 = new Day6(fileContent);
+            Assert.IsTrue(day6.Load());
+            Assert.AreEqual(fishes, day6.Part1Niave(days));
+            Assert.AreEqual(fishes, day6.PartOptimzaded(days));
+
+        }
     }
 }
